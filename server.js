@@ -44,4 +44,25 @@ app.post('/register', async (req, res) => {
 	// req.body.email
 });
 
+
+app.post('/login', async (req, res) => {
+	const user = users.find((u) => u.email === req.body.email);
+	if (!user) {
+		return res.status(400).send('Cannot find user'); // Handle invalid user
+	}
+
+	try {
+		if (await bcrypt.compare(req.body.password, user.password)) {
+			res.send('Login Successful!');
+		} else {
+			res.send('Not Allowed');
+		}
+	} catch (error) {
+		console.log(error, 'Error during login');
+		res.status(500).send('An error occurred');
+	}
+});
+
+
+
 app.listen(3001);
