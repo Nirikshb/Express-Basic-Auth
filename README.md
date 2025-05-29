@@ -28,6 +28,13 @@ A basic authentication backend built with Express.js, featuring user registratio
 
 1. Clone the repository
 
+
+.env file dummy
+PORT=5000
+MONGO_URI=your_mongo_connection_string
+JWT_SECRET=your_jwt_secret
 ```bash
 git clone https://github.com/Nirikshb/Express-Basic-Auth.git
 cd Express-Basic-Auth
+
+
